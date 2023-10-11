@@ -1,19 +1,23 @@
+import { useState } from "react";
 import Number from "./Number";
 import Operation from "./Operation";
 import Screen from "./Screen";
 
 const Calculator = () => {
-  /** TODO: Here is where you are going to keep track of calculator state */
+  //state for displaying numbers on the screen
+  const [screenDisplay, setScreenDisplay] = useState ("");
 
-  /** TODO: what happens when I click a number? */
-  const handleNumberClick = () => {};
+  //display the number that has been clicked
+  const handleNumberClick = (number) => {
+    setScreenDisplay(`${screenDisplay}${number}`)
+  };
 
   /** TODO: what happens when I click an operation? */
   const handleOperationClick = () => {};
 
   return (
     <div>
-      <Screen value="123" />
+      <Screen value={screenDisplay} />
       <div style={{ display: "flex" }}>
         <div>
           <Number value={0} onClick={handleNumberClick} />
