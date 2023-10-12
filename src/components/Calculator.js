@@ -11,19 +11,20 @@ const Calculator = () => {
   const [operation, setOperation] = useState("");
 
   //store the numbers clicked
-  const [number, setNumber] = useState(0);
+  const [storedNumber, setStoredNumber] = useState(0);
 
-  //handle the number clicked and update screen display
+  //handle the number clicked
   const handleNumberClick = (number) => {
-    setScreenDisplay(`${screenDisplay}${number}`)
+    setScreenDisplay(`${screenDisplay}${number}`);
   };
 
-  //handle the operation clicked and update screen display
+  //handle the operation clicked
   const handleOperationClick = (operation) => {
-    if (operation === "="){ performCalculation(); }
+    if (operation === "=") { performCalculation() }
+    else if (operation === "clear") { clearCalculator() }
     else {
-    setScreenDisplay(`${screenDisplay}${operation}`)
-    setNumber(parseFloat(screenDisplay))
+      setStoredNumber(parseFloat(screenDisplay))
+      setOperation(operation)
     }
   };
 
@@ -31,19 +32,26 @@ const Calculator = () => {
   const performCalculation = () => {
     const latestNumber = parseFloat(screenDisplay);
     let result = 0;
-    if (operation === "+") { result = number + latestNumber }
-    else if (operation === "-") { result = number - latestNumber }
-    else if (operation === "x") { result = number * latestNumber }
+    if (operation === "+") { result = storedNumber + latestNumber }
+    else if (operation === "-") { result = storedNumber - latestNumber }
+    else if (operation === "x") { result = storedNumber * latestNumber }
     else if (operation === "/") {
       if (latestNumber === 0) {
         setScreenDisplay("Error");
         return;
       }
-      result = number / latestNumber
+      result = storedNumber / latestNumber
     }
 
     setScreenDisplay(result.toString());
   };
+
+  //enable clear functionality
+  const clearCalculator = () => {
+    setScreenDisplay("")
+    setOperation("")
+    setStoredNumber(0)
+  }
 
   return (
     <div>
