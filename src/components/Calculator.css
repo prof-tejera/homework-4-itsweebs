@@ -1,0 +1,11 @@
+.calculator {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1);
+}
+.stack {
+    display: flex;
+}

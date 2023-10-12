@@ -2,6 +2,7 @@ import { useState } from "react";
 import Number from "./Number";
 import Operation from "./Operation";
 import Screen from "./Screen";
+import './Calculator.css';
 
 const Calculator = () => {
   //store numbers and operations displayed on the screen
@@ -61,29 +62,33 @@ const Calculator = () => {
   };
 
   return (
-    <div>
+    <div className="calculator">
       <Screen value={screenDisplay} />
-      <div style={{ display: "flex" }}>
-        <div>
-          <Number value={0} onClick={handleNumberClick} />
-          <Number value={1} onClick={handleNumberClick} />
-          <Number value={2} onClick={handleNumberClick} />
-          <Number value={3} onClick={handleNumberClick} />
-          <Number value={4} onClick={handleNumberClick} />
-          <Number value={5} onClick={handleNumberClick} />
-          <Number value={6} onClick={handleNumberClick} />
+      <div>
+          <div className="stack">
           <Number value={7} onClick={handleNumberClick} />
           <Number value={8} onClick={handleNumberClick} />
           <Number value={9} onClick={handleNumberClick} />
-        </div>
-        <div style={{ paddingLeft: 10 }}>
           <Operation value="+" onClick={handleOperationClick} />
-          <Operation value="/" onClick={handleOperationClick} />
-          <Operation value="x" onClick={handleOperationClick} />
+          </div>
+          <div className="stack">
+          <Number value={4} onClick={handleNumberClick} />
+          <Number value={5} onClick={handleNumberClick} />
+          <Number value={6} onClick={handleNumberClick} />
           <Operation value="-" onClick={handleOperationClick} />
+          </div>
+          <div className="stack">
+          <Number value={1} onClick={handleNumberClick} />
+          <Number value={2} onClick={handleNumberClick} />
+          <Number value={3} onClick={handleNumberClick} />
+          <Operation value="x" onClick={handleOperationClick} />
+          </div>
+          <div className="stack">
+          <Operation value="C" onClick={handleOperationClick} />
+          <Number value={0} onClick={handleNumberClick} />
           <Operation value="=" onClick={handleOperationClick} />
-          <Operation value="clear" onClick={handleOperationClick} />
-        </div>
+          <Operation value="/" onClick={handleOperationClick} />
+          </div>
       </div>
     </div>
   );

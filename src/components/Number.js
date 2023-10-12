@@ -1,7 +1,8 @@
+import './Number.css'
 const Number = ({ value, onClick }) => {
   //pass number value to calculator
   return (
-    <div
+    <div className="number"
       onClick = {() => onClick(value)}
     >
       {value}

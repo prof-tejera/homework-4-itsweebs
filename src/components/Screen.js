@@ -1,6 +1,8 @@
+import './Screen.css'
+
 const Screen = ({ value }) => {
   return (
-    <div>
+    <div className="display">
       {value}
     </div>
   );
