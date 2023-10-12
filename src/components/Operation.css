@@ -15,8 +15,8 @@
 
 .operation:hover {
     background: rgba(255, 255, 255, 0.3);
-  }
-  
-  .operation:active {
-    background: rgba(255, 255, 255, 0.4); 
-  }
+}
+
+.operation:active {
+    background: rgba(255, 255, 255, 0.4);
+}

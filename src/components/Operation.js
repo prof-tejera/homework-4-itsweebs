@@ -4,7 +4,7 @@ const Operation = ({ value, onClick }) => {
   //pass operation value to calculator
   return (
     <div className="operation"
-      onClick = {() => onClick(value)}
+      onClick={() => onClick(value)}
     >
       {value}
     </div>

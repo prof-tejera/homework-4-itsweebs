@@ -65,30 +65,30 @@ const Calculator = () => {
     <div className="calculator">
       <Screen value={screenDisplay} />
       <div>
-          <div className="stack">
+        <div className="stack">
           <Number value={7} onClick={handleNumberClick} />
           <Number value={8} onClick={handleNumberClick} />
           <Number value={9} onClick={handleNumberClick} />
           <Operation value="+" onClick={handleOperationClick} />
-          </div>
-          <div className="stack">
+        </div>
+        <div className="stack">
           <Number value={4} onClick={handleNumberClick} />
           <Number value={5} onClick={handleNumberClick} />
           <Number value={6} onClick={handleNumberClick} />
           <Operation value="-" onClick={handleOperationClick} />
-          </div>
-          <div className="stack">
+        </div>
+        <div className="stack">
           <Number value={1} onClick={handleNumberClick} />
           <Number value={2} onClick={handleNumberClick} />
           <Number value={3} onClick={handleNumberClick} />
           <Operation value="x" onClick={handleOperationClick} />
-          </div>
-          <div className="stack">
+        </div>
+        <div className="stack">
           <Operation value="C" onClick={handleOperationClick} />
           <Number value={0} onClick={handleNumberClick} />
           <Operation value="=" onClick={handleOperationClick} />
           <Operation value="/" onClick={handleOperationClick} />
-          </div>
+        </div>
       </div>
     </div>
   );
