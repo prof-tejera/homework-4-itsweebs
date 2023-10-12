@@ -11,7 +11,11 @@ const Calculator = () => {
   const [operation, setOperation] = useState("");
 
   //store the numbers clicked
-  const [storedNumber, setStoredNumber] = useState(0);
+  const [storedNumber, setStoredNumber] = useState("");
+
+  //parse screenDisplay and storedNumber into numbers
+  const latestNumber = parseFloat(screenDisplay);
+  const previousNumber = parseFloat(storedNumber);
 
   //handle the number clicked
   const handleNumberClick = (number) => {
@@ -20,38 +24,41 @@ const Calculator = () => {
 
   //handle the operation clicked
   const handleOperationClick = (operation) => {
-    if (operation === "=") { performCalculation() }
-    else if (operation === "clear") { clearCalculator() }
+    if (operation === "=") { performCalculation(); }
+    else if (operation === "clear") { clearCalculator(); }
     else {
-      setStoredNumber(parseFloat(screenDisplay))
-      setOperation(operation)
+      setStoredNumber(screenDisplay);
+      setOperation(operation);
+      setScreenDisplay("");
     }
   };
 
   //enabling the calculator to perform calculations
   const performCalculation = () => {
-    const latestNumber = parseFloat(screenDisplay);
     let result = 0;
-    if (operation === "+") { result = storedNumber + latestNumber }
-    else if (operation === "-") { result = storedNumber - latestNumber }
-    else if (operation === "x") { result = storedNumber * latestNumber }
+
+    if (operation === "+") { result = previousNumber + latestNumber; }
+    else if (operation === "-") { result = previousNumber - latestNumber; }
+    else if (operation === "x") { result = previousNumber * latestNumber; }
     else if (operation === "/") {
       if (latestNumber === 0) {
-        setScreenDisplay("Error");
+        setScreenDisplay("error");
         return;
       }
-      result = storedNumber / latestNumber
+      result = previousNumber / latestNumber;
     }
-
+    //display calculation result and reset 
     setScreenDisplay(result.toString());
+    setOperation("");
+    setStoredNumber("");
   };
 
   //enable clear functionality
   const clearCalculator = () => {
-    setScreenDisplay("")
-    setOperation("")
-    setStoredNumber(0)
-  }
+    setScreenDisplay("");
+    setOperation("");
+    setStoredNumber("");
+  };
 
   return (
     <div>
