@@ -1,5 +1,5 @@
 const Number = ({ value, onClick }) => {
-  /** TODO: What happens when a user clicks a number, what do we want to pass to our parent? */
+  //pass number value to calculator
   return (
     <div
       style={{

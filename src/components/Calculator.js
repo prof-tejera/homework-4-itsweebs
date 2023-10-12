@@ -4,16 +4,46 @@ import Operation from "./Operation";
 import Screen from "./Screen";
 
 const Calculator = () => {
-  //state for displaying numbers on the screen
-  const [screenDisplay, setScreenDisplay] = useState ("");
+  //store numbers and operations displayed on the screen
+  const [screenDisplay, setScreenDisplay] = useState("");
 
-  //display the number that has been clicked
+  //store the operations clicked
+  const [operation, setOperation] = useState("");
+
+  //store the numbers clicked
+  const [number, setNumber] = useState(0);
+
+  //handle the number clicked and update screen display
   const handleNumberClick = (number) => {
     setScreenDisplay(`${screenDisplay}${number}`)
   };
 
-  /** TODO: what happens when I click an operation? */
-  const handleOperationClick = () => {};
+  //handle the operation clicked and update screen display
+  const handleOperationClick = (operation) => {
+    if (operation === "="){ performCalculation(); }
+    else {
+    setScreenDisplay(`${screenDisplay}${operation}`)
+    setNumber(parseFloat(screenDisplay))
+    }
+  };
+
+  //enabling the calculator to perform calculations
+  const performCalculation = () => {
+    const latestNumber = parseFloat(screenDisplay);
+    let result = 0;
+    if (operation === "+") { result = number + latestNumber }
+    else if (operation === "-") { result = number - latestNumber }
+    else if (operation === "x") { result = number * latestNumber }
+    else if (operation === "/") {
+      if (latestNumber === 0) {
+        setScreenDisplay("Error");
+        return;
+      }
+      result = number / latestNumber
+    }
+
+    setScreenDisplay(result.toString());
+  };
 
   return (
     <div>
